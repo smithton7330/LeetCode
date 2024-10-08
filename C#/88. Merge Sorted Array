@@ -1,0 +1,23 @@
+public class Solution {
+    public void Merge(int[] nums1, int m, int[] nums2, int n) {
+        int i = m - 1;  // nums1의 마지막 유효한 요소
+        int j = n - 1;  // nums2의 마지막 유효한 요소
+        int idx = m + n - 1;  // nums1의 전체 크기에서 마지막 인덱스
+
+        // nums1과 nums2를 뒤에서부터 병합
+        while (i >= 0 && j >= 0) {
+            if (nums1[i] > nums2[j]) {
+                nums1[idx--] = nums1[i--];  // nums1의 큰 값은 끝으로 이동
+            } else {
+                nums1[idx--] = nums2[j--];  // nums2의 큰 값은 끝으로 이동
+            }
+        }
+
+        // nums2에 남은 요소가 있으면 nums1로 복사
+        while (j >= 0) {
+            nums1[idx--] = nums2[j--];
+        }
+        
+        
+    }
+}
