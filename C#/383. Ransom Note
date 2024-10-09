@@ -1,0 +1,27 @@
+public class Solution {
+    public bool CanConstruct(string ransomNote, string magazine) {
+        
+        Dictionary<char, int> letterCounts = new Dictionary<char, int>();
+
+        foreach (char c in magazine) {
+            if (letterCounts.ContainsKey(c)) {
+                letterCounts[c]++;
+            }
+            else {
+                letterCounts[c] = 1;
+            }
+        }
+
+        foreach (char c in ransomNote) {
+            if (!letterCounts.ContainsKey(c) || letterCounts[c] == 0) {
+                return false;
+            }
+            else {
+                letterCounts[c]--;
+            }
+        }
+
+        return true;
+
+}
+}
